@@ -3,22 +3,20 @@ version: "3.8"
 services:
   backend:
     build: ./backend
-    container_name: desafio-agronegocio-backend
+    container_name: desafio_backend
     ports:
       - "8000:8000"
     volumes:
-      - ./backend:/app  # Só use em desenvolvimento
-    networks:
-      - desafio_net
+      - ./backend:/app
+    environment:
+      - PYTHONUNBUFFERED=1
 
   frontend:
     build: ./frontend
-    container_name: desafio-agronegocio-frontend
+    container_name: desafio_frontend
     ports:
-      - "3000:80"
-    networks:
-      - desafio_net
-
-networks:
-  desafio_net:
-    driver: bridge
+      - "3000:3000"
+    volumes:
+      - ./frontend:/www:ro
+    depends_on:
+      - backend
