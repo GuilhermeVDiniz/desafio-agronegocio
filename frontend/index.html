@@ -1,13 +1,99 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Técnico: Plataforma de Visualização de Dados do Agronegócio</title>
+
+    <!-- Favicon corrigido -->
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="/img/175567.svg">
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="/img/175567.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/175567.svg">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Leaflet CSS (deve vir antes do JS) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- JavaScript Libraries -->
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Plugin para exibir valores nas barras do Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    
+    <!-- Leaflet para mapas -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Plataforma de Visualização de Dados do Agronegócio</h1>
+            <p>Maiores produtores por tipo de Cultura</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="filters-section">
+            <h2>Filtros</h2>
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="ano-select">Ano:</label>
+                    <select id="ano-select"></select>
+                </div>
+                <div class="filter-group">
+                    <label for="cultura-select">Cultura:</label>
+                    <select id="cultura-select"></select>
+                </div>
+                <button id="aplicar-filtros">Aplicar Filtros</button>
+            </div>
+        </section>
+        <div class="dashboard-grid">
+            <!-- Seção de estatísticas -->
+            <section class="stats-section">
+                <h2>Estatísticas Gerais</h2>
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <h3>Total Produzido</h3>
+                        <p id="total-producao">Carregando...</p>
+                        <span>Toneladas</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Regiões Produtoras</h3>
+                        <p id="total-regioes">Carregando...</p>
+                        <span>Mesorregiões</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Maior Produtor</h3>
+                        <p id="maior-produtor">Carregando...</p>
+                        <span>Região</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção do gráfico -->
+            <section class="chart-section">
+                <h2>Produção por Região (Top 10)</h2>
+                <div class="chart-container">
+                    <canvas id="producaoChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Seção do mapa -->
+            <section class="map-section">
+                <h2>Mapa de Produção</h2>
+                <div id="map" class="map-container"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Dashboard Agronegócio - Desenvolvido por Guilherme V. Diniz</p>
+        </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+</body>
 </html>

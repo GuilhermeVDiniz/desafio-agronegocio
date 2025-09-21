@@ -1,12 +1,24 @@
-# React + Vite
+# Fronteed - Dashboard Agronegócio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um dashboard web simples para visualização de dados de produção de culturas por mesorregião geográfica no Brasil.
 
-Currently, two official plugins are available:
+## Requisitos
+ - Browser
+ - Docker
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🐳 Executando o Frontend (sem backend)
+O Dockerfile usa a imagem **BusyBox** com um servidor HTTP simples embutido.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Execução Local
+
+```bash
+# Build da imagem
+  docker build -t dashboard-frontend .
+
+# Executar container
+  docker run -p 3000:3000 dashboard-frontend
+```
+👉 Agora acesse no navegador:
+http://localhost:3000
