@@ -1,10 +1,22 @@
 from fastapi import FastAPI
-from app.routers import production, cities, cultures, analytics
+from fastapi.middleware.cors import CORSMiddleware
+from app.routers import production, health_check, cultures
 
 app = FastAPI(title="API - Agronegócio")
 
-app.include_router(production.router, prefix="/api/productions", tags=["Produção Agrícola"])
-app.include_router(cities.router, prefix="/api/cities", tags=["Municípios"])
-app.include_router(cultures.router, prefix="/api/cultures", tags=["Culturas"])
-app.include_router(analytics.router, prefix="/api/analytics", tags=["Indicadores"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
+# status
+app.include_router(health_check.router, prefix="/api", tags=["Status"])
+
+# data
+app.include_router(production.router, prefix="/api/data", tags=["Dados Produção Agrícola"])
+
+# opcoes
+app.include_router(cultures.router, prefix="/api/opcoes/cultures", tags=["Opções"])
