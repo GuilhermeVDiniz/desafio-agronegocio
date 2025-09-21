@@ -18,7 +18,7 @@ def get_dados(
     Parâmetros:
     - ano: Ano de consulta (De 2021 a 2024)
     - cultura: Códigos dos produtos agrícolas (padrão: principais culturas)
-    - variável: Códigos das variáveis (padrão: 216 - Quantidade produzida)
+    - variável: Códigos das variáveis (padrão: 214 - Quantidade produzida)
     - nivel: Nível territorial (padrão: 8 - Mesorregião Geográfica)
     - região: Código da região (padrão: 'all')
     """
@@ -27,7 +27,7 @@ def get_dados(
         years = ano.split(",") if ano else ["2022", "2023"]
         years = [y.strip() for y in years]
 
-        VARIAVEL = ["216"]
+        VARIAVEL = ["214"] # Quantidade produzida
         REGIAO = "all"
         NIVEL = "8"
 

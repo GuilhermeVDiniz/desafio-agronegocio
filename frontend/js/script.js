@@ -1,5 +1,5 @@
 // Configuração da API
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE = window.API_BASE_URL;
 
 // Registrar o plugin de datalabels
 Chart.register(ChartDataLabels);
@@ -250,8 +250,8 @@ async function criarMapa() {
     
     // Adicionar mapa
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
-        attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
     // Filtrar e pegar apenas os TOP 10 dados válidos
     const dadosValidos = dadosProducao
